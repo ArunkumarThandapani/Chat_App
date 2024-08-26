@@ -12,11 +12,11 @@ const Homepage = () => {
     console.log(newValue);
     if (newValue === "SignUp") {
       setvisLgn(false);
-      setbxht("50vh");
+      setbxht("75%");
     }
     if (newValue === "Login") {
       setvisLgn(true);
-      setbxht("40vh");
+      setbxht("50%");
     }
 
     setValue(newValue);
@@ -38,7 +38,7 @@ const Homepage = () => {
       <Box
         sx={{
           width: "30vw",
-          height: "5vh",
+          height: "5%",
           bgcolor: "whitesmoke",
           color: "purple",
           variant: "text",
@@ -56,7 +56,7 @@ const Homepage = () => {
 
       <Box
         sx={{
-          width: "30vw",
+          width: "30%",
           height: bxht,
           bgcolor: "whitesmoke",
           color: "black",

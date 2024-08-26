@@ -29,7 +29,7 @@ const Signup = () => {
     <Box
       sx={{
         width: "90%",
-        height: "50%",
+        height: "80%",
         bgcolor: "whitesmoke",
         color: "black",
         variant: "text",
@@ -94,7 +94,7 @@ const Signup = () => {
         }}
         sx={{
           bgcolor: "blueviolet",
-          height: "25%",
+          height: "5vh",
           width: "50%",
           color: "black",
           fontWeight: "bold",

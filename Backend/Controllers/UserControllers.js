@@ -37,20 +37,23 @@ const registerUser = asynchandler(async (req, res) => {
 });
 
 const authUser = asynchandler(async (req, res) => {
-  const { email, password } = req.body;
+  try {
+    const { email, password } = req.body;
 
-  const userexist = await User.findOne({ email });
-  if (userexist && userexist.matchpassword(password)) {
-    res.json({
-      _id: User._id,
-      name: User.name,
-      email: User.email,
-      pic: User.pic,
-      token: generatetoken(User._id),
-    });
-  } else {
-    res.status(401);
-    throw new Error("Invalid User");
+    const userexist = await User.findOne({ email });
+    if (userexist && (await userexist.matchpassword(password))) {
+      res.json({
+        _id: User._id,
+        name: User.name,
+        email: User.email,
+        pic: User.pic,
+        token: generatetoken(User._id),
+      });
+    } else {
+      throw new Error("Invalid User");
+    }
+  } catch (error) {
+    res.status(401).send({ Error: error });
   }
 });
 
