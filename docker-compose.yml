@@ -14,8 +14,8 @@ services:
       environment:
       - CHOKIDAR_USEPOLLING = true
       - PORT=5000
-      - MONGO_URI="mongodb+srv://arunkumart24071986:Aarya2016@cluster0.vxrx4km.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
-      - JWT_SECRET="mYFIRSTcHATAPP"    
+      - MONGO_URI=mongodb+srv://arunkumart24071986:Aarya2016@cluster0.vxrx4km.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+      - JWT_SECRET=mYFIRSTcHATAPP   
 
 
 volumes:
