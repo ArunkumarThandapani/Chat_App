@@ -23,5 +23,5 @@ services:
       voulumes:
         - chat-app:/data/db
 
-    voulumes:
-      chat-app:
+voulumes:
+  chat-app:
