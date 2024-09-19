@@ -20,8 +20,8 @@ services:
       image: mongo:4.0-xenial
       ports:
         - 27017:27017
-      voulumes:
+      volumes:
         - chat-app:/data/db
 
-voulumes:
+volumes:
   chat-app:
