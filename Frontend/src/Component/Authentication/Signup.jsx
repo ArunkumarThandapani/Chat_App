@@ -1,7 +1,10 @@
 import { React, useState } from "react";
 import Axios from "../../Api/axios_api";
-
+import "../../../style/signup.css"
 import { Box, TextField, Button } from "@mui/material";
+import Snackbar from '@mui/material/Snackbar';
+
+
 
 const Signup = () => {
   const [usrname, setusrname] = useState("");
@@ -9,10 +12,50 @@ const Signup = () => {
   const [pwd, setpwd] = useState("");
   const [cnfpwd, setcnfpwd] = useState("");
   const [pic, setpic] = useState("");
+  const[open,setopen]=useState(false);
+  const [snackmsg,setsnackmsg]=useState("");
 
-  const Postdetail = (e) => {
-    const fff = e.target.value;
-    return fff;
+  
+
+
+
+const handleClose=()=>{
+  setopen(false);
+  setsnackmsg("")  
+}
+
+  const Postdetail = (pics) => {
+    if (pics===undefined)
+    {
+      setsnackmsg("Kindly select an image");
+    }
+    if (pics.type==="image/jpg" || pics.type==="image/png")
+    {
+      const data= new FormData();
+      data.append("file",pics)
+      data.append("upload_preset","Chatapp")
+      data.append("cloud_name","arun2407app")
+      
+      
+      fetch(`https://api.cloudinary.com/v1_1/Arun2407app/image/upload`,{
+        method:'post',
+        body:data,
+      }).then((res)=>res.json())
+      .then(data=>{
+        setpic(data.url.toString());
+        setopen(true);
+        setsnackmsg("Profile Picture Upload succesfully")
+      })
+      .catch(err=>{
+        setopen(true);
+        setsnackmsg("Profile Picture Upload Failed")
+        console.log(err.message)  ;
+      })
+    }
+    else{
+      setopen(true);
+      setsnackmsg("choose jpg/png files")           
+    }
   };
 
   const registeruser = async () => {
@@ -26,25 +69,10 @@ const Signup = () => {
   };
 
   return (
-    <Box
-      sx={{
-        width: "90%",
-        height: "80%",
-        bgcolor: "whitesmoke",
-        color: "black",
-        variant: "text",
-        borderRadius: 5,
-        opacity: 0.8,
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        fontSize: "",
-        gap: 2,
-        paddingBlock: 5,
-      }}
-    >
+    
+    <>
       <TextField
-        id="sgnup_usrnm"
+        id="outlined"
         label="UserName"
         variant="outlined"
         width="25%"
@@ -91,20 +119,17 @@ const Signup = () => {
         id="signup_btn"
         onClick={() => {
           registeruser();
-        }}
-        sx={{
-          bgcolor: "blueviolet",
-          height: "5vh",
-          width: "50%",
-          color: "black",
-          fontWeight: "bold",
-          textColor: "black",
-          alignItems: "center",
-        }}
-      >
+        }}>
         SignUp
       </Button>
-    </Box>
+
+        <Snackbar
+          open={open}
+          autoHideDuration={3000}
+          onClose={handleClose}
+          message={snackmsg}
+        />      
+      </>
   );
 };
 

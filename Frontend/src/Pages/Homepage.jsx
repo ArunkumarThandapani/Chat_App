@@ -1,4 +1,4 @@
-import { Container, Box, Tab, Tabs } from "@mui/material";
+import { Container, Box, Tab, Tabs, ButtonGroupContext } from "@mui/material";
 import { React, useState } from "react";
 import Login from "../Component/Authentication/Login";
 import Signup from "../Component/Authentication/Signup";
@@ -35,39 +35,6 @@ const Homepage = () => {
         gap: 2,
       }}
     >
-      <Box
-        sx={{
-          width: "30vw",
-          height: "5%",
-          bgcolor: "whitesmoke",
-          color: "purple",
-          variant: "text",
-          borderRadius: 5,
-          opacity: 0.8,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          fontWeight: "Bold",
-        }}
-      >
-        VConnect
-      </Box>
-
-      <Box
-        sx={{
-          width: "30%",
-          height: bxht,
-          bgcolor: "whitesmoke",
-          color: "black",
-          variant: "text",
-          borderRadius: 5,
-          opacity: 0.8,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
         <Tabs
           value={value}
           onChange={handleChange}
@@ -83,7 +50,6 @@ const Homepage = () => {
           <Tab value="SignUp" label="SignUp" />
         </Tabs>
         {visLgn ? <Login /> : <Signup />}
-      </Box>
     </Container>
   );
 };

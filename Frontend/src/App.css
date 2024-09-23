@@ -1,9 +1,88 @@
-@import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+:root{
+  --primary:black;
+  --Allborders:rgb(122, 117, 117);
+  --secborders:rgb(109, 105, 105);
+  --Alltxt:silver;
+  --secondary:rgb(114, 114, 196);
 
-.App {
-  min-height: 100vh;
-  display: flex;
-  background-image: url("./Background.jpg");
-  background-size: cover;
-  background-position: center;
 }
+
+.App{
+  height: 80%;
+}
+
+.Apphead{  
+  
+  color: var(--Alltxt);
+  text-align: center;
+
+    
+}
+
+.AppTit{
+  width: 100%;
+  align-content: center
+}
+
+.menuhd{
+  margin-left: 5%;
+}
+
+div.userdet {
+  
+  width: 10%;
+  float: right;
+}
+
+.AppMenu{
+  width: 100%;  
+  background-color: var(--Alltxt);
+  color: var(--Alltxt);
+  display: flex;  
+  justify-content: space-between;
+  align-items: center;
+}
+.Menu{
+  position: absolute;
+  color: black;
+
+}
+.MenuItem
+{
+  color: black;
+}
+
+
+
+.Mnuitems
+{
+  float: right;
+}
+li{
+  font: message-box;
+  display: inline;
+  text-decoration-style: solid;
+  
+  padding-left: 25px;
+}
+a{
+  text-decoration-line: none;
+  font-size: large;
+  text-decoration-thickness:10px;
+  color: var(--secborders);  
+}
+
+@media screen and (min-width: 0px) and (max-width: 400px) {
+  .menuhd {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 401px) and (max-width: 1024px) {
+  .menuhd {
+    display: none;
+  } /* hide it elsewhere */
+}
+
+
+

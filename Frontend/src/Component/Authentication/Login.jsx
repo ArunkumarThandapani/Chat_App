@@ -1,9 +1,13 @@
-import { React, useState } from "react";
+import { React, useState,usena } from "react";
+import {useNavigate} from "react-router-dom"
 
 import { Box, TextField, Button, Snackbar } from "@mui/material";
 import Axios from "../../Api/axios_api";
 
+
 const Login = () => {
+
+  const navigate= useNavigate();
   const [email, setemail] = useState("");
   const [pwd, setpwd] = useState("");
   const [open, SetOpen] = useState(false);
@@ -15,6 +19,7 @@ const Login = () => {
     })
       .then(() => {
         SetMsg("Login Successfull");
+        navigate("/chat")
       })
       .catch(() => {
         SetMsg("Login Failed");
@@ -33,23 +38,7 @@ const Login = () => {
 
   return (
     <>
-      <Box
-        sx={{
-          width: "90%",
-          height: "100%",
-          bgcolor: "whitesmoke",
-          color: "black",
-          variant: "text",
-          borderRadius: 5,
-          opacity: 0.8,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          fontSize: "",
-          gap: 2,
-          paddingBlock: 5,
-        }}
-      >
+      
         <TextField
           id="Lgn_email"
           label="Email"
@@ -71,21 +60,10 @@ const Login = () => {
           id="login_btn"
           onClick={() => {
             user_login();
-          }}
-          sx={{
-            bgcolor: "blueviolet",
-            height: "5vh%",
-            width: "50%",
-            color: "black",
-            fontWeight: "bold",
-            textColor: "black",
-            alignItems: "center",
-          }}
-        >
+          }}>
           Login
         </Button>
-      </Box>
-
+      
       <Snackbar
         open={open}
         autoHideDuration={2000}
